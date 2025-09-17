@@ -1,0 +1,564 @@
+2025-09-16 20:14:13 | INFO | Consumer interrupted by user.
+2025-09-16 20:14:14 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:14 | INFO | Kafka producer closed.
+2025-09-16 20:14:14 | INFO | END producer.
+2025-09-16 20:14:15 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:15 | INFO | Kafka producer closed.
+2025-09-16 20:14:15 | INFO | END producer.
+2025-09-16 20:14:15 | INFO | {'message': 'I just shared an app! It was weird.', 'author': 'Charlie'}
+2025-09-16 20:14:16 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:16 | INFO | Producer shutting down.
+2025-09-16 20:17:49 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:17:49 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:17:49 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:17:49 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:17:49 | INFO | Data file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:17:49 | INFO | START producer.
+2025-09-16 20:17:49 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:17:49 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': '127.0.0.1', 'port': 9092, 'rack': None}], 'cluster_id': 'izX4qtgsSweNTi1cWUWQEA', 'controller_id': 1}
+2025-09-16 20:17:49 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:17:49 | INFO | Message interval: 5 seconds
+2025-09-16 20:17:49 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:17:49 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-16 20:17:49 | INFO | Kafka producer successfully created.
+2025-09-16 20:17:49 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:17:50 | INFO | Topic 'smoker_csv' already exists. Recreating fresh...
+2025-09-16 20:17:50 | INFO | Requested deletion of topic 'smoker_csv'.
+2025-09-16 20:17:50 | INFO | Topic 'smoker_csv' created successfully.
+2025-09-16 20:17:50 | INFO | Kafka topic 'smoker_csv' is ready.
+2025-09-16 20:17:50 | INFO | Starting message production to topic 'smoker_csv'...
+2025-09-16 20:17:50 | INFO | Opening data file in read mode: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:17:50 | INFO | Reading data from file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:17:50 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:17:50.080720', 'temperature': 70.4}
+2025-09-16 20:17:51 | WARNING | Producer interrupted by user.
+2025-09-16 20:17:51 | INFO | Kafka producer closed.
+2025-09-16 20:17:51 | INFO | END producer.
+2025-09-16 20:17:59 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:17:59 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:17:59 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:17:59 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:17:59 | INFO | Data file: PROJECT_ROOT/data/buzz_live.json
+2025-09-16 20:17:59 | INFO | START producer...
+2025-09-16 20:17:59 | INFO | Hit CTRL c (or CMD c) to close.
+2025-09-16 20:17:59 | INFO | Message interval: 3 seconds
+2025-09-16 20:17:59 | INFO | {'message': 'I just found a trick! It was exciting.', 'author': 'Eve'}
+2025-09-16 20:18:02 | INFO | {'message': 'I just saw a trick! It was weird.', 'author': 'Alice'}
+2025-09-16 20:18:03 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:03 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:03 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:18:03 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:18:03 | INFO | Data file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:18:03 | INFO | START producer.
+2025-09-16 20:18:03 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:03 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': '127.0.0.1', 'port': 9092, 'rack': None}], 'cluster_id': 'izX4qtgsSweNTi1cWUWQEA', 'controller_id': 1}
+2025-09-16 20:18:03 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:18:03 | INFO | Message interval: 5 seconds
+2025-09-16 20:18:03 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:03 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-16 20:18:04 | INFO | Kafka producer successfully created.
+2025-09-16 20:18:04 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:04 | INFO | Topic 'smoker_csv' already exists. Recreating fresh...
+2025-09-16 20:18:04 | INFO | Requested deletion of topic 'smoker_csv'.
+2025-09-16 20:18:04 | INFO | Topic 'smoker_csv' created successfully.
+2025-09-16 20:18:04 | INFO | Kafka topic 'smoker_csv' is ready.
+2025-09-16 20:18:04 | INFO | Starting message production to topic 'smoker_csv'...
+2025-09-16 20:18:04 | INFO | Opening data file in read mode: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:18:04 | INFO | Reading data from file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:18:04 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:04.393832', 'temperature': 70.4}
+2025-09-16 20:18:05 | INFO | {'message': 'I just tried a story! It was boring.', 'author': 'Eve'}
+2025-09-16 20:18:08 | INFO | {'message': 'I just shared a meme! It was funny.', 'author': 'Alice'}
+2025-09-16 20:18:09 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:09 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:09 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:18:09 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:18:09 | INFO | Data file: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:18:09 | INFO | START producer.
+2025-09-16 20:18:09 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:09 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:09.395617', 'temperature': 70.8}
+2025-09-16 20:18:09 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': '127.0.0.1', 'port': 9092, 'rack': None}], 'cluster_id': 'izX4qtgsSweNTi1cWUWQEA', 'controller_id': 1}
+2025-09-16 20:18:09 | INFO | Kafka topic: buzzline_json
+2025-09-16 20:18:09 | INFO | Message interval: 3 seconds
+2025-09-16 20:18:09 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:09 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-16 20:18:09 | INFO | Kafka producer successfully created.
+2025-09-16 20:18:09 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:10 | INFO | Topic 'buzzline_json' already exists. Recreating fresh...
+2025-09-16 20:18:10 | INFO | Requested deletion of topic 'buzzline_json'.
+2025-09-16 20:18:10 | INFO | Topic 'buzzline_json' created successfully.
+2025-09-16 20:18:10 | INFO | Kafka topic 'buzzline_json' is ready.
+2025-09-16 20:18:10 | INFO | Starting message production to topic 'buzzline_json'...
+2025-09-16 20:18:10 | INFO | Opening data file in read mode: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:18:10 | INFO | Reading data from file: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:18:10 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Eve'}
+2025-09-16 20:18:11 | INFO | {'message': 'I just saw an app! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:18:13 | INFO | Sent message to topic 'buzzline_json': {'message': 'Distributed systems are fascinating.', 'author': 'Alice'}
+2025-09-16 20:18:14 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:14 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:14 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:18:14 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:18:14 | INFO | Data file: PROJECT_ROOT/data/buzz_live.json
+2025-09-16 20:18:14 | INFO | START consumer.
+2025-09-16 20:18:14 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:14.397025', 'temperature': 71.2}
+2025-09-16 20:18:14 | INFO | {'message': 'I just shared a movie! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:15 | INFO | Processed JSON message: {'message': 'I just shared a movie! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:15 | INFO | Message received from author: Charlie
+2025-09-16 20:18:15 | INFO | Updated author counts: {'Charlie': 1}
+2025-09-16 20:18:15 | INFO | Chart updated successfully for message: {"message": "I just shared a movie! It was exciting.", "author": "Charlie"}
+
+2025-09-16 20:18:16 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Charlie'}
+2025-09-16 20:18:17 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:17 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:17 | INFO | START consumer.
+2025-09-16 20:18:17 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:18:17 | INFO | Kafka consumer group id: smoker_group
+2025-09-16 20:18:17 | INFO | Rolling window size: 10
+2025-09-16 20:18:17 | INFO | Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-09-16 20:18:17 | INFO | Rolling window size: 10
+2025-09-16 20:18:17 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:17 | INFO | Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-09-16 20:18:17 | INFO | Kafka consumer created successfully.
+2025-09-16 20:18:17 | INFO | Polling messages from topic 'smoker_csv'...
+2025-09-16 20:18:17 | ERROR | Error while consuming messages: Invalid file descriptor: -1
+2025-09-16 20:18:17 | INFO | Kafka consumer for topic 'smoker_csv' closed.
+2025-09-16 20:18:17 | INFO | {'message': 'I just shared a trick! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:18:17 | INFO | Processed JSON message: {'message': 'I just shared a trick! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:18:17 | INFO | Message received from author: Bob
+2025-09-16 20:18:17 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 1}
+2025-09-16 20:18:17 | INFO | Chart updated successfully for message: {"message": "I just shared a trick! It was exciting.", "author": "Bob"}
+
+2025-09-16 20:18:19 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Alice'}
+2025-09-16 20:18:19 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:19.398376', 'temperature': 71.6}
+2025-09-16 20:18:20 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:20 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:20 | INFO | START consumer.
+2025-09-16 20:18:20 | INFO | Kafka topic: buzzline_json
+2025-09-16 20:18:20 | INFO | Kafka consumer group id: buzz_group
+2025-09-16 20:18:20 | INFO | Consumer: Topic 'buzzline_json' and group 'buzz_group'...
+2025-09-16 20:18:20 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:20 | INFO | Creating Kafka consumer. Topic='buzzline_json' and group ID='buzz_group'.
+2025-09-16 20:18:20 | INFO | Kafka consumer created successfully.
+2025-09-16 20:18:20 | INFO | Polling messages from topic 'buzzline_json'...
+2025-09-16 20:18:20 | ERROR | Error while consuming messages: Invalid file descriptor: -1
+2025-09-16 20:18:20 | INFO | {'message': 'I just shared a story! It was exciting.', 'author': 'Eve'}
+2025-09-16 20:18:20 | INFO | Processed JSON message: {'message': 'I just shared a story! It was exciting.', 'author': 'Eve'}
+2025-09-16 20:18:20 | INFO | Message received from author: Eve
+2025-09-16 20:18:20 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 1, 'Eve': 1}
+2025-09-16 20:18:20 | INFO | Chart updated successfully for message: {"message": "I just shared a story! It was exciting.", "author": "Eve"}
+
+2025-09-16 20:18:22 | INFO | Sent message to topic 'buzzline_json': {'message': 'Distributed systems are fascinating.', 'author': 'Diana'}
+2025-09-16 20:18:23 | INFO | Kafka consumer for topic 'buzzline_json' closed.
+2025-09-16 20:18:23 | INFO | END consumer for topic 'buzzline_json' and group 'buzz_group'.
+2025-09-16 20:18:23 | INFO | {'message': 'I just loved a movie! It was weird.', 'author': 'Eve'}
+2025-09-16 20:18:23 | INFO | Processed JSON message: {'message': 'I just loved a movie! It was weird.', 'author': 'Eve'}
+2025-09-16 20:18:23 | INFO | Message received from author: Eve
+2025-09-16 20:18:23 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 1, 'Eve': 2}
+2025-09-16 20:18:23 | INFO | Chart updated successfully for message: {"message": "I just loved a movie! It was weird.", "author": "Eve"}
+
+2025-09-16 20:18:24 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:24.399333', 'temperature': 72.0}
+2025-09-16 20:18:25 | INFO | Sent message to topic 'buzzline_json': {'message': 'Buzz messages for everyone.', 'author': 'Alice'}
+2025-09-16 20:18:26 | INFO | {'message': 'I just shared a movie! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:18:26 | INFO | Processed JSON message: {'message': 'I just shared a movie! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:18:26 | INFO | Message received from author: Eve
+2025-09-16 20:18:26 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 1, 'Eve': 3}
+2025-09-16 20:18:26 | INFO | Chart updated successfully for message: {"message": "I just shared a movie! It was amazing.", "author": "Eve"}
+
+2025-09-16 20:18:28 | INFO | Sent message to topic 'buzzline_json': {'message': 'Hello, Kafka world!', 'author': 'Diana'}
+2025-09-16 20:18:29 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:29.400613', 'temperature': 72.4}
+2025-09-16 20:18:29 | INFO | {'message': 'I just found a meme! It was boring.', 'author': 'Eve'}
+2025-09-16 20:18:29 | INFO | Processed JSON message: {'message': 'I just found a meme! It was boring.', 'author': 'Eve'}
+2025-09-16 20:18:29 | INFO | Message received from author: Eve
+2025-09-16 20:18:29 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 1, 'Eve': 4}
+2025-09-16 20:18:29 | INFO | Chart updated successfully for message: {"message": "I just found a meme! It was boring.", "author": "Eve"}
+
+2025-09-16 20:18:31 | INFO | Sent message to topic 'buzzline_json': {'message': 'This is a buzz message.', 'author': 'Eve'}
+2025-09-16 20:18:32 | INFO | {'message': 'I just tried a story! It was boring.', 'author': 'Bob'}
+2025-09-16 20:18:32 | INFO | Processed JSON message: {'message': 'I just tried a story! It was boring.', 'author': 'Bob'}
+2025-09-16 20:18:32 | INFO | Message received from author: Bob
+2025-09-16 20:18:32 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 2, 'Eve': 4}
+2025-09-16 20:18:33 | INFO | Chart updated successfully for message: {"message": "I just tried a story! It was boring.", "author": "Bob"}
+
+2025-09-16 20:18:34 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Eve'}
+2025-09-16 20:18:34 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:34.401822', 'temperature': 72.8}
+2025-09-16 20:18:35 | INFO | {'message': 'I just found a trick! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:18:36 | INFO | Processed JSON message: {'message': 'I just found a trick! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:18:36 | INFO | Message received from author: Bob
+2025-09-16 20:18:36 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 3, 'Eve': 4}
+2025-09-16 20:18:36 | INFO | Chart updated successfully for message: {"message": "I just found a trick! It was exciting.", "author": "Bob"}
+
+2025-09-16 20:18:37 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Alice'}
+2025-09-16 20:18:38 | INFO | {'message': 'I just loved a story! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:18:39 | INFO | Processed JSON message: {'message': 'I just loved a story! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:18:39 | INFO | Message received from author: Alice
+2025-09-16 20:18:39 | INFO | Updated author counts: {'Charlie': 1, 'Bob': 3, 'Eve': 4, 'Alice': 1}
+2025-09-16 20:18:39 | INFO | Chart updated successfully for message: {"message": "I just loved a story! It was amazing.", "author": "Alice"}
+
+2025-09-16 20:18:39 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:39.402948', 'temperature': 73.2}
+2025-09-16 20:18:40 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Diana'}
+2025-09-16 20:18:41 | INFO | {'message': 'I just shared a movie! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:42 | INFO | Processed JSON message: {'message': 'I just shared a movie! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:42 | INFO | Message received from author: Charlie
+2025-09-16 20:18:42 | INFO | Updated author counts: {'Charlie': 2, 'Bob': 3, 'Eve': 4, 'Alice': 1}
+2025-09-16 20:18:42 | INFO | Chart updated successfully for message: {"message": "I just shared a movie! It was exciting.", "author": "Charlie"}
+
+2025-09-16 20:18:43 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Diana'}
+2025-09-16 20:18:44 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:44.404032', 'temperature': 73.6}
+2025-09-16 20:18:44 | INFO | {'message': 'I just tried a movie! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:18:45 | INFO | Processed JSON message: {'message': 'I just tried a movie! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:18:45 | INFO | Message received from author: Charlie
+2025-09-16 20:18:45 | INFO | Updated author counts: {'Charlie': 3, 'Bob': 3, 'Eve': 4, 'Alice': 1}
+2025-09-16 20:18:45 | INFO | Chart updated successfully for message: {"message": "I just tried a movie! It was amazing.", "author": "Charlie"}
+
+2025-09-16 20:18:46 | INFO | Sent message to topic 'buzzline_json': {'message': 'Kafka is awesome.', 'author': 'Charlie'}
+2025-09-16 20:18:47 | INFO | {'message': 'I just found a story! It was exciting.', 'author': 'Eve'}
+2025-09-16 20:18:48 | INFO | Processed JSON message: {'message': 'I just found a story! It was exciting.', 'author': 'Eve'}
+2025-09-16 20:18:48 | INFO | Message received from author: Eve
+2025-09-16 20:18:48 | INFO | Updated author counts: {'Charlie': 3, 'Bob': 3, 'Eve': 5, 'Alice': 1}
+2025-09-16 20:18:48 | INFO | Chart updated successfully for message: {"message": "I just found a story! It was exciting.", "author": "Eve"}
+
+2025-09-16 20:18:49 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Bob'}
+2025-09-16 20:18:49 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:49.405478', 'temperature': 74.0}
+2025-09-16 20:18:50 | INFO | {'message': 'I just loved an app! It was exciting.', 'author': 'Alice'}
+2025-09-16 20:18:51 | INFO | Processed JSON message: {'message': 'I just loved an app! It was exciting.', 'author': 'Alice'}
+2025-09-16 20:18:51 | INFO | Message received from author: Alice
+2025-09-16 20:18:51 | INFO | Updated author counts: {'Charlie': 3, 'Bob': 3, 'Eve': 5, 'Alice': 2}
+2025-09-16 20:18:51 | INFO | Chart updated successfully for message: {"message": "I just loved an app! It was exciting.", "author": "Alice"}
+
+2025-09-16 20:18:52 | INFO | Sent message to topic 'buzzline_json': {'message': 'I love Python!', 'author': 'Bob'}
+2025-09-16 20:18:53 | INFO | {'message': 'I just loved a trick! It was funny.', 'author': 'Bob'}
+2025-09-16 20:18:53 | INFO | Processed JSON message: {'message': 'I just loved a trick! It was funny.', 'author': 'Bob'}
+2025-09-16 20:18:53 | INFO | Message received from author: Bob
+2025-09-16 20:18:53 | INFO | Updated author counts: {'Charlie': 3, 'Bob': 4, 'Eve': 5, 'Alice': 2}
+2025-09-16 20:18:53 | INFO | Chart updated successfully for message: {"message": "I just loved a trick! It was funny.", "author": "Bob"}
+
+2025-09-16 20:18:54 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:54.406925', 'temperature': 74.4}
+2025-09-16 20:18:55 | INFO | Sent message to topic 'buzzline_json': {'message': 'This is a buzz message.', 'author': 'Eve'}
+2025-09-16 20:18:56 | INFO | {'message': 'I just shared an app! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:56 | INFO | Processed JSON message: {'message': 'I just shared an app! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:18:56 | INFO | Message received from author: Charlie
+2025-09-16 20:18:56 | INFO | Updated author counts: {'Charlie': 4, 'Bob': 4, 'Eve': 5, 'Alice': 2}
+2025-09-16 20:18:56 | INFO | Chart updated successfully for message: {"message": "I just shared an app! It was exciting.", "author": "Charlie"}
+
+2025-09-16 20:18:58 | INFO | Sent message to topic 'buzzline_json': {'message': 'I love Python!', 'author': 'Eve'}
+2025-09-16 20:18:58 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:18:58 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:18:58 | INFO | START consumer.
+2025-09-16 20:18:58 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:18:58 | INFO | Kafka consumer group id: smoker_group
+2025-09-16 20:18:58 | INFO | Rolling window size: 10
+2025-09-16 20:18:58 | INFO | Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-09-16 20:18:58 | INFO | Rolling window size: 10
+2025-09-16 20:18:58 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:18:58 | INFO | Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-09-16 20:18:58 | INFO | Kafka consumer created successfully.
+2025-09-16 20:18:58 | INFO | Polling messages from topic 'smoker_csv'...
+2025-09-16 20:18:59 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:18:59.408078', 'temperature': 74.8}
+2025-09-16 20:18:59 | INFO | {'message': 'I just shared a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:18:59 | INFO | Processed JSON message: {'message': 'I just shared a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:18:59 | INFO | Message received from author: Alice
+2025-09-16 20:18:59 | INFO | Updated author counts: {'Charlie': 4, 'Bob': 4, 'Eve': 5, 'Alice': 3}
+2025-09-16 20:18:59 | INFO | Chart updated successfully for message: {"message": "I just shared a trick! It was boring.", "author": "Alice"}
+
+2025-09-16 20:19:01 | INFO | Sent message to topic 'buzzline_json': {'message': 'Buzz messages for everyone.', 'author': 'Alice'}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:04.393832', 'temperature': 70.4}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:09.395617', 'temperature': 70.8}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:14.397025', 'temperature': 71.2}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:19.398376', 'temperature': 71.6}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:24.399333', 'temperature': 72.0}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:29.400613', 'temperature': 72.4}
+2025-09-16 20:19:01 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:34.401822', 'temperature': 72.8}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:39.402948', 'temperature': 73.2}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:44.404032', 'temperature': 73.6}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:49.405478', 'temperature': 74.0}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:54.406925', 'temperature': 74.4}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:18:59.408078', 'temperature': 74.8}
+2025-09-16 20:19:02 | INFO | {'message': 'I just saw a meme! It was funny.', 'author': 'Charlie'}
+2025-09-16 20:19:02 | INFO | Processed JSON message: {'message': 'I just saw a meme! It was funny.', 'author': 'Charlie'}
+2025-09-16 20:19:02 | INFO | Message received from author: Charlie
+2025-09-16 20:19:02 | INFO | Updated author counts: {'Charlie': 5, 'Bob': 4, 'Eve': 5, 'Alice': 3}
+2025-09-16 20:19:02 | INFO | Chart updated successfully for message: {"message": "I just saw a meme! It was funny.", "author": "Charlie"}
+
+2025-09-16 20:19:04 | INFO | Sent message to topic 'buzzline_json': {'message': 'This is a buzz message.', 'author': 'Alice'}
+2025-09-16 20:19:04 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:04.409065', 'temperature': 75.2}
+2025-09-16 20:19:04 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:04.409065', 'temperature': 75.2}
+2025-09-16 20:19:05 | INFO | {'message': 'I just saw a story! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:19:05 | INFO | Processed JSON message: {'message': 'I just saw a story! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:19:05 | INFO | Message received from author: Charlie
+2025-09-16 20:19:05 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 5, 'Alice': 3}
+2025-09-16 20:19:05 | INFO | Chart updated successfully for message: {"message": "I just saw a story! It was exciting.", "author": "Charlie"}
+
+2025-09-16 20:19:07 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Diana'}
+2025-09-16 20:19:08 | INFO | {'message': 'I just found a movie! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:19:08 | INFO | Processed JSON message: {'message': 'I just found a movie! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:19:08 | INFO | Message received from author: Alice
+2025-09-16 20:19:08 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 5, 'Alice': 4}
+2025-09-16 20:19:09 | INFO | Chart updated successfully for message: {"message": "I just found a movie! It was amazing.", "author": "Alice"}
+
+2025-09-16 20:19:09 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:09.409936', 'temperature': 75.6}
+2025-09-16 20:19:09 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:09.409936', 'temperature': 75.6}
+2025-09-16 20:19:10 | INFO | Sent message to topic 'buzzline_json': {'message': 'I love Python!', 'author': 'Eve'}
+2025-09-16 20:19:11 | INFO | {'message': 'I just saw a meme! It was exciting.', 'author': 'Alice'}
+2025-09-16 20:19:12 | INFO | Processed JSON message: {'message': 'I just saw a meme! It was exciting.', 'author': 'Alice'}
+2025-09-16 20:19:12 | INFO | Message received from author: Alice
+2025-09-16 20:19:12 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 5, 'Alice': 5}
+2025-09-16 20:19:12 | INFO | Chart updated successfully for message: {"message": "I just saw a meme! It was exciting.", "author": "Alice"}
+
+2025-09-16 20:19:13 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Charlie'}
+2025-09-16 20:19:14 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:14.411275', 'temperature': 76.0}
+2025-09-16 20:19:14 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:14.411275', 'temperature': 76.0}
+2025-09-16 20:19:14 | INFO | {'message': 'I just found a movie! It was boring.', 'author': 'Eve'}
+2025-09-16 20:19:15 | INFO | Processed JSON message: {'message': 'I just found a movie! It was boring.', 'author': 'Eve'}
+2025-09-16 20:19:15 | INFO | Message received from author: Eve
+2025-09-16 20:19:15 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 6, 'Alice': 5}
+2025-09-16 20:19:15 | INFO | Chart updated successfully for message: {"message": "I just found a movie! It was boring.", "author": "Eve"}
+
+2025-09-16 20:19:16 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Bob'}
+2025-09-16 20:19:17 | INFO | {'message': 'I just loved a story! It was funny.', 'author': 'Alice'}
+2025-09-16 20:19:18 | INFO | Processed JSON message: {'message': 'I just loved a story! It was funny.', 'author': 'Alice'}
+2025-09-16 20:19:18 | INFO | Message received from author: Alice
+2025-09-16 20:19:18 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 6, 'Alice': 6}
+2025-09-16 20:19:18 | INFO | Chart updated successfully for message: {"message": "I just loved a story! It was funny.", "author": "Alice"}
+
+2025-09-16 20:19:19 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Alice'}
+2025-09-16 20:19:19 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:19.412461', 'temperature': 76.4}
+2025-09-16 20:19:19 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:19.412461', 'temperature': 76.4}
+2025-09-16 20:19:20 | INFO | {'message': 'I just saw a movie! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:19:21 | INFO | Processed JSON message: {'message': 'I just saw a movie! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:19:21 | INFO | Message received from author: Alice
+2025-09-16 20:19:21 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 4, 'Eve': 6, 'Alice': 7}
+2025-09-16 20:19:21 | INFO | Chart updated successfully for message: {"message": "I just saw a movie! It was amazing.", "author": "Alice"}
+
+2025-09-16 20:19:22 | INFO | Sent message to topic 'buzzline_json': {'message': 'Kafka is awesome.', 'author': 'Diana'}
+2025-09-16 20:19:23 | INFO | {'message': 'I just saw a trick! It was boring.', 'author': 'Bob'}
+2025-09-16 20:19:24 | INFO | Processed JSON message: {'message': 'I just saw a trick! It was boring.', 'author': 'Bob'}
+2025-09-16 20:19:24 | INFO | Message received from author: Bob
+2025-09-16 20:19:24 | INFO | Updated author counts: {'Charlie': 6, 'Bob': 5, 'Eve': 6, 'Alice': 7}
+2025-09-16 20:19:24 | INFO | Chart updated successfully for message: {"message": "I just saw a trick! It was boring.", "author": "Bob"}
+
+2025-09-16 20:19:24 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:24.413744', 'temperature': 76.8}
+2025-09-16 20:19:24 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:24.413744', 'temperature': 76.8}
+2025-09-16 20:19:25 | INFO | Sent message to topic 'buzzline_json': {'message': 'Kafka is awesome.', 'author': 'Diana'}
+2025-09-16 20:19:26 | INFO | {'message': 'I just found a meme! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:19:27 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:19:27 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:19:27 | INFO | START consumer.
+2025-09-16 20:19:27 | INFO | Kafka topic: buzzline_json
+2025-09-16 20:19:27 | INFO | Kafka consumer group id: buzz_group
+2025-09-16 20:19:27 | INFO | Consumer: Topic 'buzzline_json' and group 'buzz_group'...
+2025-09-16 20:19:27 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:19:27 | INFO | Creating Kafka consumer. Topic='buzzline_json' and group ID='buzz_group'.
+2025-09-16 20:19:27 | INFO | Processed JSON message: {'message': 'I just found a meme! It was exciting.', 'author': 'Charlie'}
+2025-09-16 20:19:27 | INFO | Message received from author: Charlie
+2025-09-16 20:19:27 | INFO | Updated author counts: {'Charlie': 7, 'Bob': 5, 'Eve': 6, 'Alice': 7}
+2025-09-16 20:19:27 | INFO | Chart updated successfully for message: {"message": "I just found a meme! It was exciting.", "author": "Charlie"}
+
+2025-09-16 20:19:27 | INFO | Kafka consumer created successfully.
+2025-09-16 20:19:27 | INFO | Polling messages from topic 'buzzline_json'...
+2025-09-16 20:19:27 | ERROR | Error while consuming messages: Invalid file descriptor: -1
+2025-09-16 20:19:27 | INFO | Kafka consumer for topic 'buzzline_json' closed.
+2025-09-16 20:19:27 | INFO | END consumer for topic 'buzzline_json' and group 'buzz_group'.
+2025-09-16 20:19:28 | INFO | Sent message to topic 'buzzline_json': {'message': 'Hello, Kafka world!', 'author': 'Bob'}
+2025-09-16 20:19:29 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:29.415335', 'temperature': 77.2}
+2025-09-16 20:19:29 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:29.415335', 'temperature': 77.2}
+2025-09-16 20:19:29 | INFO | {'message': 'I just shared an app! It was amazing.', 'author': 'Bob'}
+2025-09-16 20:19:30 | INFO | Processed JSON message: {'message': 'I just shared an app! It was amazing.', 'author': 'Bob'}
+2025-09-16 20:19:30 | INFO | Message received from author: Bob
+2025-09-16 20:19:30 | INFO | Updated author counts: {'Charlie': 7, 'Bob': 6, 'Eve': 6, 'Alice': 7}
+2025-09-16 20:19:30 | INFO | Chart updated successfully for message: {"message": "I just shared an app! It was amazing.", "author": "Bob"}
+
+2025-09-16 20:19:31 | INFO | Sent message to topic 'buzzline_json': {'message': 'Distributed systems are fascinating.', 'author': 'Diana'}
+2025-09-16 20:19:32 | INFO | {'message': 'I just shared a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:33 | INFO | Processed JSON message: {'message': 'I just shared a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:33 | INFO | Message received from author: Alice
+2025-09-16 20:19:33 | INFO | Updated author counts: {'Charlie': 7, 'Bob': 6, 'Eve': 6, 'Alice': 8}
+2025-09-16 20:19:33 | INFO | Chart updated successfully for message: {"message": "I just shared a trick! It was boring.", "author": "Alice"}
+
+2025-09-16 20:19:34 | INFO | Sent message to topic 'buzzline_json': {'message': 'I love Python!', 'author': 'Diana'}
+2025-09-16 20:19:34 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:34.416291', 'temperature': 77.6}
+2025-09-16 20:19:34 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:34.416291', 'temperature': 77.6}
+2025-09-16 20:19:35 | INFO | {'message': 'I just loved a movie! It was weird.', 'author': 'Charlie'}
+2025-09-16 20:19:35 | INFO | Processed JSON message: {'message': 'I just loved a movie! It was weird.', 'author': 'Charlie'}
+2025-09-16 20:19:35 | INFO | Message received from author: Charlie
+2025-09-16 20:19:35 | INFO | Updated author counts: {'Charlie': 8, 'Bob': 6, 'Eve': 6, 'Alice': 8}
+2025-09-16 20:19:35 | INFO | Chart updated successfully for message: {"message": "I just loved a movie! It was weird.", "author": "Charlie"}
+
+2025-09-16 20:19:37 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Alice'}
+2025-09-16 20:19:38 | INFO | {'message': 'I just found a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:38 | INFO | Processed JSON message: {'message': 'I just found a trick! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:38 | INFO | Message received from author: Alice
+2025-09-16 20:19:38 | INFO | Updated author counts: {'Charlie': 8, 'Bob': 6, 'Eve': 6, 'Alice': 9}
+2025-09-16 20:19:38 | INFO | Chart updated successfully for message: {"message": "I just found a trick! It was boring.", "author": "Alice"}
+
+2025-09-16 20:19:39 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:39.417264', 'temperature': 78.0}
+2025-09-16 20:19:39 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:39.417264', 'temperature': 78.0}
+2025-09-16 20:19:40 | INFO | Sent message to topic 'buzzline_json': {'message': 'Hello, Kafka world!', 'author': 'Charlie'}
+2025-09-16 20:19:41 | INFO | {'message': 'I just loved a trick! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:19:41 | INFO | Processed JSON message: {'message': 'I just loved a trick! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:19:41 | INFO | Message received from author: Charlie
+2025-09-16 20:19:41 | INFO | Updated author counts: {'Charlie': 9, 'Bob': 6, 'Eve': 6, 'Alice': 9}
+2025-09-16 20:19:41 | INFO | Chart updated successfully for message: {"message": "I just loved a trick! It was amazing.", "author": "Charlie"}
+
+2025-09-16 20:19:43 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Diana'}
+2025-09-16 20:19:44 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:44.418327', 'temperature': 78.4}
+2025-09-16 20:19:44 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:44.418327', 'temperature': 78.4}
+2025-09-16 20:19:44 | INFO | {'message': 'I just found a movie! It was boring.', 'author': 'Charlie'}
+2025-09-16 20:19:44 | INFO | Processed JSON message: {'message': 'I just found a movie! It was boring.', 'author': 'Charlie'}
+2025-09-16 20:19:44 | INFO | Message received from author: Charlie
+2025-09-16 20:19:44 | INFO | Updated author counts: {'Charlie': 10, 'Bob': 6, 'Eve': 6, 'Alice': 9}
+2025-09-16 20:19:44 | INFO | Chart updated successfully for message: {"message": "I just found a movie! It was boring.", "author": "Charlie"}
+
+2025-09-16 20:19:46 | INFO | Sent message to topic 'buzzline_json': {'message': 'I love Python!', 'author': 'Bob'}
+2025-09-16 20:19:47 | INFO | {'message': 'I just tried a meme! It was boring.', 'author': 'Eve'}
+2025-09-16 20:19:47 | INFO | Processed JSON message: {'message': 'I just tried a meme! It was boring.', 'author': 'Eve'}
+2025-09-16 20:19:47 | INFO | Message received from author: Eve
+2025-09-16 20:19:47 | INFO | Updated author counts: {'Charlie': 10, 'Bob': 6, 'Eve': 7, 'Alice': 9}
+2025-09-16 20:19:48 | INFO | Chart updated successfully for message: {"message": "I just tried a meme! It was boring.", "author": "Eve"}
+
+2025-09-16 20:19:49 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Diana'}
+2025-09-16 20:19:49 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:49.419633', 'temperature': 78.8}
+2025-09-16 20:19:49 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:49.419633', 'temperature': 78.8}
+2025-09-16 20:19:50 | INFO | {'message': 'I just loved a meme! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:51 | INFO | Processed JSON message: {'message': 'I just loved a meme! It was boring.', 'author': 'Alice'}
+2025-09-16 20:19:51 | INFO | Message received from author: Alice
+2025-09-16 20:19:51 | INFO | Updated author counts: {'Charlie': 10, 'Bob': 6, 'Eve': 7, 'Alice': 10}
+2025-09-16 20:19:51 | INFO | Chart updated successfully for message: {"message": "I just loved a meme! It was boring.", "author": "Alice"}
+
+2025-09-16 20:19:52 | INFO | Sent message to topic 'buzzline_json': {'message': 'Hello, Kafka world!', 'author': 'Alice'}
+2025-09-16 20:19:53 | INFO | {'message': 'I just saw a story! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:19:54 | INFO | Processed JSON message: {'message': 'I just saw a story! It was amazing.', 'author': 'Charlie'}
+2025-09-16 20:19:54 | INFO | Message received from author: Charlie
+2025-09-16 20:19:54 | INFO | Updated author counts: {'Charlie': 11, 'Bob': 6, 'Eve': 7, 'Alice': 10}
+2025-09-16 20:19:54 | INFO | Chart updated successfully for message: {"message": "I just saw a story! It was amazing.", "author": "Charlie"}
+
+2025-09-16 20:19:54 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:54.420977', 'temperature': 79.2}
+2025-09-16 20:19:54 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:54.420977', 'temperature': 79.2}
+2025-09-16 20:19:55 | INFO | Sent message to topic 'buzzline_json': {'message': 'JSON makes life easier.', 'author': 'Alice'}
+2025-09-16 20:19:56 | INFO | {'message': 'I just loved a meme! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:19:57 | INFO | Processed JSON message: {'message': 'I just loved a meme! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:19:57 | INFO | Message received from author: Eve
+2025-09-16 20:19:57 | INFO | Updated author counts: {'Charlie': 11, 'Bob': 6, 'Eve': 8, 'Alice': 10}
+2025-09-16 20:19:57 | INFO | Chart updated successfully for message: {"message": "I just loved a meme! It was amazing.", "author": "Eve"}
+
+2025-09-16 20:19:58 | INFO | Sent message to topic 'buzzline_json': {'message': 'Buzz messages for everyone.', 'author': 'Charlie'}
+2025-09-16 20:19:59 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:19:59.422528', 'temperature': 79.6}
+2025-09-16 20:19:59 | INFO | Processed JSON message: {'timestamp': '2025-09-17T01:19:59.422528', 'temperature': 79.6}
+2025-09-16 20:19:59 | INFO | {'message': 'I just found an app! It was boring.', 'author': 'Charlie'}
+2025-09-16 20:20:00 | INFO | Processed JSON message: {'message': 'I just found an app! It was boring.', 'author': 'Charlie'}
+2025-09-16 20:20:00 | INFO | Message received from author: Charlie
+2025-09-16 20:20:00 | INFO | Updated author counts: {'Charlie': 12, 'Bob': 6, 'Eve': 8, 'Alice': 10}
+2025-09-16 20:20:00 | INFO | Chart updated successfully for message: {"message": "I just found an app! It was boring.", "author": "Charlie"}
+
+2025-09-16 20:20:01 | INFO | Sent message to topic 'buzzline_json': {'message': 'Buzz messages for everyone.', 'author': 'Bob'}
+2025-09-16 20:20:02 | INFO | {'message': 'I just found a movie! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:20:03 | INFO | Processed JSON message: {'message': 'I just found a movie! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:20:03 | INFO | Message received from author: Bob
+2025-09-16 20:20:03 | INFO | Updated author counts: {'Charlie': 12, 'Bob': 7, 'Eve': 8, 'Alice': 10}
+2025-09-16 20:20:03 | INFO | Chart updated successfully for message: {"message": "I just found a movie! It was exciting.", "author": "Bob"}
+
+2025-09-16 20:20:04 | INFO | Sent message to topic 'buzzline_json': {'message': 'Streaming data is fun.', 'author': 'Diana'}
+2025-09-16 20:20:04 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:20:04.423430', 'temperature': 80.0}
+2025-09-16 20:20:04 | WARNING | Consumer interrupted by user.
+2025-09-16 20:20:04 | INFO | Kafka consumer for topic 'smoker_csv' closed.
+2025-09-16 20:20:05 | INFO | {'message': 'I just tried a movie! It was funny.', 'author': 'Eve'}
+2025-09-16 20:20:06 | INFO | Processed JSON message: {'message': 'I just tried a movie! It was funny.', 'author': 'Eve'}
+2025-09-16 20:20:06 | INFO | Message received from author: Eve
+2025-09-16 20:20:06 | INFO | Updated author counts: {'Charlie': 12, 'Bob': 7, 'Eve': 9, 'Alice': 10}
+2025-09-16 20:20:06 | INFO | Chart updated successfully for message: {"message": "I just tried a movie! It was funny.", "author": "Eve"}
+
+2025-09-16 20:20:07 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Diana'}
+2025-09-16 20:20:07 | INFO | Consumer interrupted by user.
+2025-09-16 20:20:08 | WARNING | Producer interrupted by user.
+2025-09-16 20:20:08 | INFO | Kafka producer closed.
+2025-09-16 20:20:08 | INFO | END producer.
+2025-09-16 20:20:08 | INFO | {'message': 'I just saw a trick! It was boring.', 'author': 'Charlie'}
+2025-09-16 20:20:09 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:20:09.424567', 'temperature': 80.4}
+2025-09-16 20:20:10 | WARNING | Producer interrupted by user.
+2025-09-16 20:20:10 | INFO | Kafka producer closed.
+2025-09-16 20:20:10 | INFO | END producer.
+2025-09-16 20:20:11 | INFO | {'message': 'I just found a trick! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:20:12 | WARNING | Producer interrupted by user.
+2025-09-16 20:20:12 | INFO | Producer shutting down.
+2025-09-16 20:20:28 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:20:28 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:20:28 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:20:28 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:20:28 | INFO | Data file: PROJECT_ROOT/data/buzz_live.json
+2025-09-16 20:20:28 | INFO | START producer...
+2025-09-16 20:20:28 | INFO | Hit CTRL c (or CMD c) to close.
+2025-09-16 20:20:28 | INFO | Message interval: 3 seconds
+2025-09-16 20:20:28 | INFO | {'message': 'I just shared a movie! It was amazing.', 'author': 'Bob'}
+2025-09-16 20:20:31 | INFO | {'message': 'I just found a trick! It was amazing.', 'author': 'Eve'}
+2025-09-16 20:20:32 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:20:32 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:20:32 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:20:32 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:20:32 | INFO | Data file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:20:32 | INFO | START producer.
+2025-09-16 20:20:32 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:32 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': '127.0.0.1', 'port': 9092, 'rack': None}], 'cluster_id': 'izX4qtgsSweNTi1cWUWQEA', 'controller_id': 1}
+2025-09-16 20:20:32 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:20:32 | INFO | Message interval: 5 seconds
+2025-09-16 20:20:32 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:32 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-16 20:20:33 | INFO | Kafka producer successfully created.
+2025-09-16 20:20:33 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:33 | INFO | Topic 'smoker_csv' already exists. Recreating fresh...
+2025-09-16 20:20:33 | INFO | Requested deletion of topic 'smoker_csv'.
+2025-09-16 20:20:33 | INFO | Topic 'smoker_csv' created successfully.
+2025-09-16 20:20:33 | INFO | Kafka topic 'smoker_csv' is ready.
+2025-09-16 20:20:33 | INFO | Starting message production to topic 'smoker_csv'...
+2025-09-16 20:20:33 | INFO | Opening data file in read mode: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:20:33 | INFO | Reading data from file: PROJECT_ROOT/data/smoker_temps.csv
+2025-09-16 20:20:33 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:20:33.430533', 'temperature': 70.4}
+2025-09-16 20:20:34 | INFO | {'message': 'I just tried a movie! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:20:36 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:20:36 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:20:36 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:20:36 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:20:36 | INFO | Data file: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:20:36 | INFO | START producer.
+2025-09-16 20:20:36 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:36 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': '127.0.0.1', 'port': 9092, 'rack': None}], 'cluster_id': 'izX4qtgsSweNTi1cWUWQEA', 'controller_id': 1}
+2025-09-16 20:20:36 | INFO | Kafka topic: buzzline_json
+2025-09-16 20:20:36 | INFO | Message interval: 3 seconds
+2025-09-16 20:20:36 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:36 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-16 20:20:36 | INFO | Kafka producer successfully created.
+2025-09-16 20:20:36 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:37 | INFO | Topic 'buzzline_json' already exists. Recreating fresh...
+2025-09-16 20:20:37 | INFO | Requested deletion of topic 'buzzline_json'.
+2025-09-16 20:20:37 | INFO | Topic 'buzzline_json' created successfully.
+2025-09-16 20:20:37 | INFO | Kafka topic 'buzzline_json' is ready.
+2025-09-16 20:20:37 | INFO | Starting message production to topic 'buzzline_json'...
+2025-09-16 20:20:37 | INFO | Opening data file in read mode: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:20:37 | INFO | Reading data from file: PROJECT_ROOT/data/buzz.json
+2025-09-16 20:20:37 | INFO | Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Eve'}
+2025-09-16 20:20:37 | INFO | {'message': 'I just tried a movie! It was exciting.', 'author': 'Bob'}
+2025-09-16 20:20:38 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:20:38.432763', 'temperature': 70.8}
+2025-09-16 20:20:40 | INFO | Sent message to topic 'buzzline_json': {'message': 'Distributed systems are fascinating.', 'author': 'Alice'}
+2025-09-16 20:20:40 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:20:40 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:20:40 | INFO | Project root: PROJECT_ROOT
+2025-09-16 20:20:40 | INFO | Data folder: PROJECT_ROOT/data
+2025-09-16 20:20:40 | INFO | Data file: PROJECT_ROOT/data/buzz_live.json
+2025-09-16 20:20:40 | INFO | START consumer.
+2025-09-16 20:20:40 | INFO | {'message': 'I just loved an app! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:20:41 | INFO | Processed JSON message: {'message': 'I just loved an app! It was amazing.', 'author': 'Alice'}
+2025-09-16 20:20:41 | INFO | Message received from author: Alice
+2025-09-16 20:20:41 | INFO | Updated author counts: {'Alice': 1}
+2025-09-16 20:20:41 | INFO | Chart updated successfully for message: {"message": "I just loved an app! It was amazing.", "author": "Alice"}
+
+2025-09-16 20:20:43 | INFO | Sent message to topic 'buzzline_json': {'message': 'Have a great day!', 'author': 'Charlie'}
+2025-09-16 20:20:43 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-17T01:20:43.433873', 'temperature': 71.2}
+2025-09-16 20:20:43 | INFO | Logging to file: logs/project_log.log
+2025-09-16 20:20:43 | INFO | Log sanitization enabled, personal info removed
+2025-09-16 20:20:43 | INFO | START consumer.
+2025-09-16 20:20:43 | INFO | Kafka topic: smoker_csv
+2025-09-16 20:20:43 | INFO | Kafka consumer group id: smoker_group
+2025-09-16 20:20:43 | INFO | Rolling window size: 10
+2025-09-16 20:20:43 | INFO | Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-09-16 20:20:43 | INFO | Rolling window size: 10
+2025-09-16 20:20:43 | INFO | Kafka broker address: localhost:9092
+2025-09-16 20:20:43 | INFO | Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-09-16 20:20:43 | INFO | Kafka consumer created successfully.
+2025-09-16 20:20:43 | INFO | Polling messages from topic 'smoker_csv'...
+2025-09-16 20:20:44 | INFO | Message received from author: Charlie
