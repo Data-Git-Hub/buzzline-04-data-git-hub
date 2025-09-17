@@ -153,7 +153,7 @@ def update_chart(rolling_window, window_size):
     # Use the built-in axes methods to set the labels and title
     ax.set_xlabel("Time")
     ax.set_ylabel("Temperature (°F)")
-    ax.set_title("Smart Smoker: Temperature vs. Time")
+    ax.set_title("Smart Smoker: Temperature vs. Time Data-Git-Hub")
 
     # Highlight stall points if conditions are met such that
     #    The rolling window is full and a stall is detected

@@ -1,0 +1,10 @@
+2025-09-16 20:14:13 | INFO | Consumer interrupted by user.
+2025-09-16 20:14:14 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:14 | INFO | Kafka producer closed.
+2025-09-16 20:14:14 | INFO | END producer.
+2025-09-16 20:14:15 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:15 | INFO | Kafka producer closed.
+2025-09-16 20:14:15 | INFO | END producer.
+2025-09-16 20:14:15 | INFO | {'message': 'I just shared an app! It was weird.', 'author': 'Charlie'}
+2025-09-16 20:14:16 | WARNING | Producer interrupted by user.
+2025-09-16 20:14:16 | INFO | Producer shutting down.

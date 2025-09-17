@@ -103,7 +103,7 @@ def update_chart():
     # Use the built-in axes methods to set the labels and title
     ax.set_xlabel("Authors")
     ax.set_ylabel("Message Counts")
-    ax.set_title("Real-Time Author Message Counts")
+    ax.set_title("Real-Time Author Message Counts Data-Git-Hub")
 
     # Use the set_xticklabels() method to rotate the x-axis labels
     # Pass in the x list, specify the rotation angle is 45 degrees,
