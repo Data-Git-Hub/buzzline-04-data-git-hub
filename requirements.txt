@@ -132,3 +132,12 @@ PyQt6; sys_platform != "win32"
 # Kafka Python client (lightweight, ~1 MB)
 # Supports Kafka 3.5+ with KRaft mode (no ZooKeeper required)
 kafka-python-ng
+
+# ======================================================
+# P4 ANALYZING AND VISUALIZING STREAMING DATA ADDS
+# ====================================================== 
+
+polars
+websocket-client
+twelvedata     # fallback SDK; Primary will be websocket-client
+requests       # fallback polling (exchangerate.host) if we run into issues with token usage
