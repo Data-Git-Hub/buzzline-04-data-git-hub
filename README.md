@@ -290,3 +290,28 @@ Live Bar Chart (Kafka JSON streaming)
 Live Line Chart with Alert (Kafka CSV streaming)
 
 ![CSV (Kafka)](images/live_line_chart_example.jpg)
+
+
+--- Project ---
+
+# P4: Analyzing and Visualizing Streaming Data
+
+## Introduction
+In this project
+
+
+## Tasks
+
+## Windows Setup Instructions
+
+## macOS/Linux Setup Instructions
+
+## Authors
+
+Contributors names and contact info <br>
+@github.com/Data-Git-Hub <br>
+
+---
+
+## Version History
+P4 Init 0.1 | Modify README.md
