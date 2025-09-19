@@ -1,19 +1,20 @@
 """
 project_consumer_data-git-hub.py
 
-Live FX visualization using Twelve Data WebSocket (intraday) with graceful fallback
-to exchangerate.host for any symbols the WS server rejects for your plan.
+Live FX/Equity/Crypto visualization using Twelve Data WebSocket (intraday) with
+graceful per-symbol fallback to Twelve Data REST /price (and, for EUR/USD only,
+exchangerate.host if no API key is available).
 
-- Multi-line chart of % change since session start (per symbol)
-- WS heartbeat
-- subscribe-status introspection (success/fail)
-- Fallback polling only for WS-failed symbols
+Symbols:
+  - EUR/USD  (forex)
+  - AAPL     (US stock)
+  - BTC/USD  (crypto)
 
-Docs notes:
-- Connect: wss://ws.twelvedata.com/v1/quotes/price?apikey=YOUR_KEY
-- Subscribe: {"action":"subscribe","params":{"symbols":"EUR/USD,USD/JPY,..."}}
-- Trial/basic WS is limited; Pro is full WS access; trial allows up to 1 connection
-  and ≤ 8 allowed symbols from their “trial list”. 1 WS credit per symbol on /quotes/price.
+Chart: Multi-line time series of % change since session start (per symbol).
+
+Run (Windows PowerShell):
+  .\.venv\Scripts\activate
+  py -m consumers.project_consumer_data-git-hub
 """
 
 from __future__ import annotations
@@ -40,20 +41,23 @@ from matplotlib.animation import FuncAnimation
 # Configuration
 # -----------------------
 
-# Start with three; you can raise to ≤ 8 later or more depending on plan
-SYMBOLS: List[str] = ["EUR/USD", "USD/JPY", "GBP/USD"]
+# Exactly the three you requested (note: Apple is "AAPL")
+SYMBOLS: List[str] = ["EUR/USD", "AAPL", "BTC/USD"]
 
 # Rolling window size per symbol
 MAX_TICKS_PER_SYMBOL = 300
 
 # Animation cadence and fallback poll frequency
 ANIMATE_INTERVAL_MS = 1000
-FALLBACK_POLL_SECONDS = 60  # only for WS-failed symbols
+FALLBACK_POLL_SECONDS = 15  # modest interval for REST fallback
 
-# Twelve Data WS endpoint (key appended at runtime)
+# Twelve Data WS endpoint (API key appended at runtime)
 DEFAULT_TWELVE_WS_URL = "wss://ws.twelvedata.com/v1/quotes/price"
 
-# Fallback (keyless)
+# Twelve Data REST base (for /price fallback)
+TD_REST_BASE = "https://api.twelvedata.com"
+
+# Fiat-only keyless fallback (used only for EUR/USD if no API key)
 EXHOST_BASE = "https://api.exchangerate.host"
 
 # Heartbeat cadence
@@ -82,7 +86,7 @@ def load_api_key() -> Optional[str]:
 Store = Dict[str, Deque[Tuple[float, float]]]
 store: Store = {sym: deque(maxlen=MAX_TICKS_PER_SYMBOL) for sym in SYMBOLS}
 
-# Track which symbols have live WS ticks
+# Track which symbols have live WS ticks (accepted) or were rejected
 WS_ACTIVE: Set[str] = set()
 WS_FAILED: Set[str] = set()
 
@@ -146,10 +150,8 @@ def on_message(app: WebSocketApp, message: str):
                 except Exception:
                     print(obj)
 
-                # Pull successes/fails into sets we can use later
                 succ = {d.get("symbol") for d in obj.get("success", []) if d.get("symbol")}
                 fail = {d.get("symbol") for d in obj.get("fails", []) if d.get("symbol")}
-                # Update globals
                 WS_ACTIVE.update(succ)
                 WS_FAILED.update(fail)
 
@@ -159,7 +161,7 @@ def on_message(app: WebSocketApp, message: str):
                 if succ:
                     print(f"[WS] live ticks: {sorted(succ)}")
                 if fail:
-                    print(f"[WS] WS-rejected (fallback via exchangerate.host): {sorted(fail)}")
+                    print(f"[WS] WS-rejected (REST fallback): {sorted(fail)}")
                 continue
 
             parsed = parse_price_message(obj)
@@ -168,7 +170,7 @@ def on_message(app: WebSocketApp, message: str):
             sym, price, ts_s = parsed
             if sym in store:
                 store[sym].append((ts_s, price))
-                WS_ACTIVE.add(sym)  # defensive (in case status missed)
+                WS_ACTIVE.add(sym)  # defensive
     except Exception:
         traceback.print_exc()
 
@@ -215,35 +217,77 @@ def ws_worker(ws_url: str, symbols: List[str]):
             time.sleep(5)
 
 # -----------------------
-# Fallback polling (only for WS-failed symbols)
+# Fallback polling
 # -----------------------
 
-def poll_exchangerate_host_once(symbols: List[str]) -> None:
-    base_url = os.getenv("EXHOST_BASE", EXHOST_BASE)
-    # derive distinct non-USD legs to request with base=USD
-    target_ccys = sorted({p.split("/")[0] if p.startswith("USD/") else p.split("/")[1] for p in symbols})
+def poll_twelvedata_price_once(symbols: List[str], api_key: Optional[str]) -> int:
+    """
+    Lightweight fallback using Twelve Data REST /price.
+    Returns number of points added.
+    """
+    if not api_key or not symbols:
+        return 0
+    try:
+        # Batch request: /price?symbol=AAPL,EUR/USD,BTC/USD&apikey=...
+        url = f"{TD_REST_BASE}/price"
+        params = {"symbol": ",".join(symbols), "apikey": api_key}
+        resp = requests.get(url, params=params, timeout=8)
+        resp.raise_for_status()
+        payload = resp.json()
+
+        # Response can be a dict of dicts (one per symbol) or a single dict if one symbol
+        now = time.time()
+        added = 0
+
+        if isinstance(payload, dict) and "price" in payload and "symbol" in payload:
+            # Single
+            sym = payload.get("symbol")
+            price = float(payload.get("price"))
+            if sym in store:
+                store[sym].append((now, price))
+                added += 1
+        else:
+            # Multi-symbol response: keys are symbols
+            for sym, obj in payload.items():
+                try:
+                    price = float(obj.get("price"))
+                except Exception:
+                    continue
+                if sym in store:
+                    store[sym].append((now, price))
+                    added += 1
+
+        if added:
+            print(f"[REST fallback] Added {added} point(s) for: {', '.join(symbols)}")
+        return added
+
+    except Exception:
+        traceback.print_exc()
+        return 0
+
+def poll_exchangerate_host_eurusd_once() -> int:
+    """
+    Keyless fallback for EUR/USD only (if no Twelve Data API key).
+    """
     try:
         resp = requests.get(
-            f"{base_url}/latest",
-            params={"base": "USD", "symbols": ",".join(target_ccys)},
-            timeout=10,
+            f"{EXHOST_BASE}/latest",
+            params={"base": "USD", "symbols": "EUR"},
+            timeout=8,
         )
         resp.raise_for_status()
         j = resp.json()
-        rates = j.get("rates", {})
+        rate = float(j.get("rates", {}).get("EUR"))
         now = time.time()
-
-        for pair in symbols:
-            base, quote = pair.split("/")
-            if base == "USD" and quote in rates:
-                price = float(rates[quote])        # USD->quote
-            elif quote == "USD" and base in rates and float(rates[base]) != 0.0:
-                price = 1.0 / float(rates[base])   # base->USD inverted
-            else:
-                continue
-            store[pair].append((now, price))
+        # USD->EUR = rate, so EUR/USD = 1 / rate
+        price = 1.0 / rate if rate else None
+        if price:
+            store["EUR/USD"].append((now, price))
+            print("[Fallback] Added 1 point for: EUR/USD (exchangerate.host)")
+            return 1
     except Exception:
         traceback.print_exc()
+    return 0
 
 # -----------------------
 # Timeseries builder (% change)
@@ -274,31 +318,36 @@ fig, ax = plt.subplots(figsize=(9, 5))
 
 def init_chart():
     ax.clear()
-    ax.set_title("Live FX: % Change Since Session Start (UTC)")
+    ax.set_title("Live Prices: % Change Since Session Start (UTC)")
     ax.set_xlabel("Time")
     ax.set_ylabel("% change")
     ax.grid(True, axis="both")
     return []
 
 def update_chart(_frame_idx):
-    # If some symbols were rejected, poll fallback ONLY for those
+    # If some symbols were rejected by WS, poll TD REST for those
     rejected = sorted(s for s in SYMBOLS if (s in WS_FAILED))
+    api_key = os.getenv("TWELVE_DATA_API_KEY")  # already loaded by load_dotenv()
     if rejected:
-        # rate-limit polls
         if (update_chart._last_poll is None) or (time.time() - update_chart._last_poll >= FALLBACK_POLL_SECONDS):
-            poll_exchangerate_host_once(rejected)
+            added = poll_twelvedata_price_once(rejected, api_key)
+            # If no API key, at least try EUR/USD via exchangerate.host
+            if added == 0 and api_key is None and "EUR/USD" in rejected:
+                poll_exchangerate_host_eurusd_once()
             update_chart._last_poll = time.time()
 
-    # If NONE have data yet (cold start), poll once for all to seed lines
+    # If NONE have data yet (cold start), seed via REST for all three (cheap) to show lines ASAP
     if all(len(dq) == 0 for dq in store.values()):
         if (update_chart._last_poll is None) or (time.time() - update_chart._last_poll >= FALLBACK_POLL_SECONDS):
-            poll_exchangerate_host_once(SYMBOLS)
+            poll_twelvedata_price_once(SYMBOLS, api_key)
+            if api_key is None:
+                poll_exchangerate_host_eurusd_once()
             update_chart._last_poll = time.time()
 
     series = build_timeseries_pct(store)
 
     ax.clear()
-    ax.set_title("Live FX: % Change Since Session Start (UTC)")
+    ax.set_title("Live Prices: % Change Since Session Start (UTC)")
     ax.set_xlabel("Time")
     ax.set_ylabel("% change")
     ax.grid(True, axis="both")
@@ -326,7 +375,7 @@ update_chart._last_poll = None  # type: ignore[attr-defined]
 def main():
     api_key = load_api_key()
     if not api_key:
-        print("[WS] No TWELVE_DATA_API_KEY found (.env or secrets/). Fallback only.")
+        print("[WS] No TWELVE_DATA_API_KEY found (.env or secrets/). WS may reject; REST fallback limited to EUR/USD for fiat only.")
     ws_url = build_ws_url(api_key)
 
     global ws_thread
