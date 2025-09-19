@@ -350,3 +350,4 @@ P4 Init 0.1 | Modify README.md
 
 ## Test History
 P4 Test 1.0 | Modify README.md - Successful single FOREX run with error
+P4 Test 1.1 | Modify README.md - Successful single USD/EUR FOREX run with multiple errors
