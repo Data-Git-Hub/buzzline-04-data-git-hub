@@ -297,40 +297,181 @@ Live Line Chart with Alert (Kafka CSV streaming)
 # P4: Analyzing and Visualizing Streaming Data
 
 ## Introduction
-In this project
+In this project, I implemented a custom real-time consumer that connects to Twelve Data via WebSocket to stream live prices and visualizes a multi-line chart of percent change since session start for three instruments across different markets:
+
+- EUR/USD (forex)
+- AAPL (U.S. equity)
+- BTC/USD (crypto)
+
+If a symbol isn’t available on the WebSocket under your plan, the app automatically falls back to Twelve Data REST /price (lightweight polling) so it still updates on the chart. If you run without an API key, the app can only seed EUR/USD (via exchangerate.host) for a minimal demo.
+
 
 ## Tasks
+1. Clone / open the project in VS Code.
+2. Create & activate a Python 3.11 virtual environment.
+3. Install dependencies from requirements.txt.
+4. Create .env and set TWELVE_DATA_API_KEY=... (keep it off GitHub).
+5. Run the consumer and verify the live chart updates.
+6. Commit & push your changes, include a screenshot for submission.
+
+
+## Requirements
+
+- Python 3.11
+- A local virtual environment (`.venv`)
+- Packages from `requirements.txt`:
+   - `matplotlib`, `websocket-client`, `requests`, and `python-dotenv`
+
 
 ## Windows Setup Instructions
-
-## macOS/Linux Setup Instructions
-
-
-## Live FX (Twelve Data WebSocket + Polars + Matplotlib)
-
-This consumer connects to **Twelve Data** via WebSocket to stream live FX ticks
-and renders a **horizontal bar chart** of **% change since session start** for up to 8 currency pairs.
-If the WebSocket is unavailable, it automatically falls back to polling **exchangerate.host** (free, keyless).
-
-### Requirements
-- Python 3.11
-- A local `.venv` with packages installed:
-
 ```shell
+# 1) In VS Code terminal (PowerShell), from the project root:
+py -3.11 -m venv .venv
 .\.venv\Scripts\activate
+
+# 2) Upgrade tools and install project deps
+py -m pip install --upgrade pip setuptools wheel
 py -m pip install --upgrade -r requirements.txt
-```
 
-## Test API key
+# 3) Create .env with your Twelve Data key (see "Get a free trial API key" below)
+#    File: .env   (in project root)
+#    TWELVE_DATA_API_KEY=YOUR_KEY_HERE
 
-1. Add `polars`, `websocket-client`, `twelvedata`, `requests` to `requirements.txt` and install.  
-2. Create `.env` with your `TWELVE_DATA_API_KEY` and confirm `.env` is in `.gitignore`.  
-3. Run:
-   
-```shell
-.\.venv\Scripts\activate
+# 4) Run the consumer
 py -m consumers.project_consumer_data-git-hub
 ```
+
+
+## macOS/Linux Setup Instructions
+```bash
+# 1) In the project root:
+python3.11 -m venv .venv || python3 -m venv .venv
+source .venv/bin/activate
+
+# 2) Upgrade tools and install project deps
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install --upgrade -r requirements.txt
+
+# 3) Create .env with your Twelve Data key (see "Get a free trial API key" below)
+#    File: .env   (in project root)
+#    TWELVE_DATA_API_KEY=YOUR_KEY_HERE
+
+# 4) Run the consumer
+python3 -m consumers.project_consumer_data-git-hub
+```
+
+
+## Live Price (twelvedata.com WebSocket + Matplotlib)
+This consumer connects to Twelve Data via WebSocket to stream live ticks and renders a multi-line Matplotlib chart of % change since session start for the configured symbols.
+
+- If the WebSocket declines any symbol based on your plan, that symbol is backfilled via Twelve Data REST /price every ~15 seconds.
+- If you run without a key, only EUR/USD can be seeded via exchangerate.host (for a minimal demo).
+
+
+## Get a free trial API key (twelvedata.com)
+
+1. Go to https://twelvedata.com/ and create a free (Basic) account.
+2. After sign-up, copy your API key from the dashboard.
+3. In your project root, create a file named `.env` containing:
+
+```shell
+TWELVE_DATA_API_KEY=YOUR_KEY_HERE
+```
+4. Confirm `.env` is git-ignored (it should already be in `.gitignore`).
+5. Plan notes (Basic / trial highlights):
+   - You can test WebSocket streams but some symbols may be limited by plan.
+   - Each subscribed symbol on `/v1/quotes/price` consumes 1 WebSocket credit.
+   - Keep your simultaneous symbol list ≤ 8 on the Basic tier.
+   - If a symbol is rejected by WS, this app will auto-fallback via Twelve Data REST `/price`.
+
+As of this version, verified symbols that work on the trial:
+
+- `EUR/USD` (forex)
+- `AAPL` (U.S. stock)
+- `BTC/USD` (crypto)
+
+These trial allowances can change—if any symbol is rejected, you’ll see a subscribe-status log, and the app will fallback to REST for that symbol.
+
+
+## Changing Symbols (for higher-tier plans, see https://twelvedata.com/pricing )
+Open:
+```shell
+consumers/project_consumer_data-git-hub.py
+```
+
+Find the `SYMBOLS` list near the top and edit it. Keep it within your WS credits:
+```shell
+# -------------------------------------------------------------
+# Configuration      CHANGE HERE IF YOU HAVE A HIGHER-TIER PLAN ***
+# -------------------------------------------------------------
+
+# Exactly the three you requested (note: Apple is "AAPL")
+SYMBOLS: List[str] = ["EUR/USD", "AAPL", "BTC/USD"]
+
+# -------------------------------------------------------------
+# Configuration      CHANGE HERE IF YOU HAVE A HIGHER-TIER PLAN ***
+# -------------------------------------------------------------
+```
+
+Example change:
+```shell
+# -------------------------------------------------------------
+# Configuration      CHANGE HERE IF YOU HAVE A HIGHER-TIER PLAN ***
+# -------------------------------------------------------------
+
+# Exactly the three you requested (note: Apple is "AAPL")
+SYMBOLS: List[str] = ["EUR/USD", "AAPL", "BTC/USD", "USD.JPY", GBP/USD", "MSFT", "ETH/USD"]
+
+# -------------------------------------------------------------
+# Configuration      CHANGE HERE IF YOU HAVE A HIGHER-TIER PLAN ***
+# -------------------------------------------------------------
+```
+Tips:
+- If the WS server rejects any symbol, this app prints the full subscribe-status and will fallback to REST polling for that symbol automatically.
+- You don’t need to restart for minor edits, but it’s recommended—changes are best picked up on a fresh run.
+
+
+## API Key Hygiene (don’t commit secrets)
+- Store the key in .env (and/or secrets/), both are git-ignored.
+- Never hard-code your key in .py files.
+- If you rotate keys, just update .env.
+
+
+## Troubleshooting
+
+- “subscribe-status: warning/ok with fails”
+   - Your plan may not include that symbol on WS. The app logs the reject list and starts REST fallback for those symbols.
+
+- No lines on chart
+   - Give it a few seconds. Equities tick during market hours; FX depends on liquidity/time; crypto ticks 24/7. The app seeds lines via REST to show something quickly.
+
+- Matplotlib window issues on Linux
+   - Install Tk backend: sudo apt-get install python3-tk.
+
+- Firewall/Proxy
+   - WebSocket (wss://) needs outbound access. Check corporate proxies/firewalls.
+
+
+## Test API key (sanity check)
+
+Windows:
+```shell
+# Make sure the deps and key are set
+.\.venv\Scripts\activate
+py -m pip install --upgrade -r requirements.txt
+
+# Run
+py -m consumers.project_consumer_data-git-hub
+```
+
+macOS\Linux
+```bash
+source .venv/bin/activate
+python3 -m pip install --upgrade -r requirements.txt
+
+python3 -m consumers.project_consumer_data-git-hub
+```
+
 ## Authors
 
 Contributors names and contact info <br>
@@ -339,6 +480,7 @@ Contributors names and contact info <br>
 ---
 
 ## Version History
+P4 Finl 2.0 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.5 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.4 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.3 | Modify project_consumer_data-git-hub, README.md
