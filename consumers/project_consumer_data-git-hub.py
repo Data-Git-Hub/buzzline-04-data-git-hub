@@ -6,6 +6,12 @@ exchangerate.host polling.
 
 Chart: Multi-line time series of % change since session start (per symbol).
 
+Prereqs
+-------
+- requirements.txt should include: polars, websocket-client, requests, python-dotenv, matplotlib
+- Create .env with: TWELVE_DATA_API_KEY=YOUR_KEY
+- Ensure .env and secrets/ are git-ignored.
+
 Run
 ---
 PowerShell:
@@ -26,11 +32,11 @@ from datetime import datetime, timezone
 
 # External dependencies
 from dotenv import load_dotenv
-import polars as pl
+import polars as pl  # reserved for future aggregations; not strictly required for the line chart logic
 import requests
 from websocket import WebSocketApp
 
-# Matplotlib
+# Matplotlib (no seaborn, single figure)
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
@@ -38,8 +44,8 @@ from matplotlib.animation import FuncAnimation
 # Configuration
 # -----------------------
 
-# ≤ 8 pairs to respect Basic 8 WS credits
-SYMBOLS: List[str] = ["EUR/USD", "GBP/USD", "USD/JPY", "USD/CAD", "USD/CHF", "AUD/USD"]
+# (#4) Trimmed symbol basket for initial testing (raise up to ≤ 8 later)
+SYMBOLS: List[str] = ["EUR/USD", "USD/JPY", "GBP/USD"]
 
 # Rolling window of ticks per symbol (kept in memory)
 MAX_TICKS_PER_SYMBOL = 300
@@ -48,14 +54,13 @@ MAX_TICKS_PER_SYMBOL = 300
 ANIMATE_INTERVAL_MS = 1000
 FALLBACK_POLL_SECONDS = 60
 
-# Twelve Data WebSocket (documented default endpoint)
-# Docs: wss://ws.twelvedata.com/v1/quotes/price?apikey=YOUR_KEY
+# Twelve Data WebSocket default endpoint (append ?apikey= at runtime)
 DEFAULT_TWELVE_WS_URL = "wss://ws.twelvedata.com/v1/quotes/price"
 
 # exchangerate.host (keyless fallback)
 EXHOST_BASE = "https://api.exchangerate.host"
 
-# Heartbeat every 10 seconds (as recommended by Twelve Data support)
+# Heartbeat every 10 seconds
 HEARTBEAT_SECONDS = 10
 
 # -----------------------
@@ -93,35 +98,31 @@ ws_thread: Optional[threading.Thread] = None
 
 def build_ws_url(api_key: Optional[str]) -> str:
     base_ws = os.getenv("TWELVE_DATA_WS_URL", DEFAULT_TWELVE_WS_URL)
-    return f"{base_ws}?apikey={api_key}" if api_key else base_ws  # will fail w/o key
+    return f"{base_ws}?apikey={api_key}" if api_key else base_ws
 
 def build_subscribe_payload(symbols: List[str]) -> str:
     """
-    Per docs, subscribe by sending:
-    {"action":"subscribe","params":{"symbols":"AAPL,EUR/USD,..."}}
+    Subscribe payload, per Twelve Data docs for /v1/quotes/price:
+      {"action":"subscribe","params":{"symbols":"EUR/USD,USD/JPY,..."}}
     """
     return json.dumps({"action": "subscribe", "params": {"symbols": ",".join(symbols)}})
 
 def build_heartbeat_payload() -> str:
-    # Per docs, send heartbeat periodically to keep the connection alive.
     return json.dumps({"action": "heartbeat"})
 
 def parse_price_message(obj: dict) -> Optional[Tuple[str, float, float]]:
     """
-    Extract (symbol, price, ts_seconds) from a WS 'price' event (or similar).
-    Handles common key variants. Returns None if not a price tick.
+    Extract (symbol, price, ts_seconds) from a WS 'price' event (or equivalent).
+    Returns None if not a price tick message.
     """
-    # Many messages include 'event': 'price' or status events; ignore non-price.
     event = obj.get("event")
-    if event not in (None, "price", "trade", "quote"):  # be tolerant
-        # For subscribe-status, auth, etc. just ignore here.
+    if event not in (None, "price", "trade", "quote"):
         return None
 
     symbol = obj.get("symbol")
     if not symbol:
         return None
 
-    # Extract a float price: try 'price', then 'last', then 'close', then 'bid'
     price_val = None
     for k in ("price", "last", "close", "bid"):
         if k in obj:
@@ -133,12 +134,10 @@ def parse_price_message(obj: dict) -> Optional[Tuple[str, float, float]]:
     if price_val is None:
         return None
 
-    # Timestamp seconds: try 'timestamp' first; fall back to now
     ts = obj.get("timestamp")
     if isinstance(ts, (int, float)):
         ts_seconds = float(ts)
     elif isinstance(ts, str):
-        # Try parse numeric string; otherwise use now
         try:
             ts_seconds = float(ts)
         except Exception:
@@ -148,18 +147,21 @@ def parse_price_message(obj: dict) -> Optional[Tuple[str, float, float]]:
 
     return (symbol, price_val, ts_seconds)
 
+# (#2) Expanded status printing so we see exactly why we're getting a warning
 def on_message(app: WebSocketApp, message: str):
     try:
         data = json.loads(message)
-
-        # Messages might come as dict or a list of dicts; normalize to list
         batch = data if isinstance(data, list) else [data]
         for obj in batch:
-            # Useful to log subscribe-status once
             if obj.get("event") == "subscribe-status":
-                status = obj.get("status")
-                info = obj.get("message") or obj.get("info") or ""
-                print(f"[WS] subscribe-status: {status} {info}")
+                print("[WS] subscribe-status raw:")
+                try:
+                    print(json.dumps(obj, indent=2, sort_keys=True))
+                except Exception:
+                    print(obj)
+                st = obj.get("status", "unknown")
+                msg = obj.get("message") or obj.get("info") or obj.get("detail") or ""
+                print(f"[WS] subscribe-status: {st} {msg}")
                 continue
 
             parsed = parse_price_message(obj)
@@ -183,9 +185,7 @@ def heartbeat_worker(app: WebSocketApp):
         try:
             app.send(build_heartbeat_payload())
         except Exception:
-            # Ignore transient send errors; the main loop will reconnect if needed
             pass
-        # Sleep in small steps to react faster to stop_event
         for _ in range(HEARTBEAT_SECONDS):
             if stop_event.is_set() or not getattr(app, "keep_running", False):
                 break
@@ -195,7 +195,6 @@ def on_open(app: WebSocketApp, symbols: List[str]):
     try:
         app.send(build_subscribe_payload(symbols))
         print(f"[WS] Subscribed to: {', '.join(symbols)}")
-        # Start heartbeat thread
         t = threading.Thread(target=heartbeat_worker, args=(app,), daemon=True)
         t.start()
     except Exception:
@@ -212,11 +211,9 @@ def ws_worker(ws_url: str, symbols: List[str]):
                 on_close=on_close,
             )
             app.on_open = lambda a: on_open(a, symbols)
-            # ping_interval helps at TCP level; we also send API heartbeat
             app.run_forever(ping_interval=20, ping_timeout=10)
         except Exception as e:
             print(f"[WS] Worker exception: {e}")
-        # Backoff before reconnect
         if not stop_event.is_set():
             time.sleep(5)
 
@@ -227,10 +224,9 @@ def ws_worker(ws_url: str, symbols: List[str]):
 def poll_exchangerate_host_once(symbols: List[str]) -> None:
     """
     Pull latest rates using USD as pivot, then derive requested pairs.
-    Example request: /latest?base=USD&symbols=EUR,GBP,JPY,CAD,CHF,AUD
+    Example request: /latest?base=USD&symbols=EUR,GBP,JPY,...
     """
     base_url = os.getenv("EXHOST_BASE", EXHOST_BASE)
-    # derive the set of non-USD legs to request with base=USD
     target_ccys = sorted({p.split("/")[0] if p.startswith("USD/") else p.split("/")[1] for p in symbols})
     try:
         resp = requests.get(
@@ -256,7 +252,7 @@ def poll_exchangerate_host_once(symbols: List[str]) -> None:
         traceback.print_exc()
 
 # -----------------------
-# Data shaping with Polars
+# Build % change timeseries (per symbol)
 # -----------------------
 
 def build_timeseries_pct(store: Store) -> Dict[str, Tuple[List[datetime], List[float]]]:
@@ -297,7 +293,6 @@ def init_chart():
 def update_chart(_frame_idx):
     # If WS hasn't produced data yet, softly poll fallback
     if all(len(dq) == 0 for dq in store.values()):
-        # Poll at most once per FALLBACK_POLL_SECONDS
         if (update_chart._last_poll is None) or (time.time() - update_chart._last_poll >= FALLBACK_POLL_SECONDS):
             poll_exchangerate_host_once(SYMBOLS)
             update_chart._last_poll = time.time()
@@ -344,7 +339,15 @@ def main():
         ws_thread = threading.Thread(target=ws_worker, args=(ws_url, SYMBOLS), daemon=True)
         ws_thread.start()
 
-    ani = FuncAnimation(fig, update_chart, init_func=init_chart, interval=ANIMATE_INTERVAL_MS, blit=False)
+    # (#3) Disable frame-data caching to avoid the warning about unbounded cache
+    ani = FuncAnimation(
+        fig,
+        update_chart,
+        init_func=init_chart,
+        interval=ANIMATE_INTERVAL_MS,
+        blit=False,
+        cache_frame_data=False,  # <— fix #3
+    )
     plt.tight_layout()
     plt.show()
 
