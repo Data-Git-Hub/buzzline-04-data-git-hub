@@ -299,13 +299,38 @@ Live Line Chart with Alert (Kafka CSV streaming)
 ## Introduction
 In this project
 
-
 ## Tasks
 
 ## Windows Setup Instructions
 
 ## macOS/Linux Setup Instructions
 
+
+## Live FX (Twelve Data WebSocket + Polars + Matplotlib)
+
+This consumer connects to **Twelve Data** via WebSocket to stream live FX ticks
+and renders a **horizontal bar chart** of **% change since session start** for up to 8 currency pairs.
+If the WebSocket is unavailable, it automatically falls back to polling **exchangerate.host** (free, keyless).
+
+### Requirements
+- Python 3.11
+- A local `.venv` with packages installed:
+
+```shell
+.\.venv\Scripts\activate
+py -m pip install --upgrade -r requirements.txt
+```
+
+## Test API key
+
+1. Add `polars`, `websocket-client`, `twelvedata`, `requests` to `requirements.txt` and install.  
+2. Create `.env` with your `TWELVE_DATA_API_KEY` and confirm `.env` is in `.gitignore`.  
+3. Run:
+   
+```shell
+.\.venv\Scripts\activate
+py -m consumers.project_consumer_data-git-hub
+```
 ## Authors
 
 Contributors names and contact info <br>
@@ -314,6 +339,7 @@ Contributors names and contact info <br>
 ---
 
 ## Version History
+P4 Main 1.1 | Modify project_consumer_data-git-hub; Modify README.md
 P4 Main 1.0 | Add project_consumer_data-git-hub; Modify README.md
 P4 Init 0.5 | Modify .env, .gitignore, README.md
 P4 Init 0.4 | Modify requirements.txt, README.md
