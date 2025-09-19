@@ -339,6 +339,7 @@ Contributors names and contact info <br>
 ---
 
 ## Version History
+P4 Main 1.5 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.4 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.3 | Modify project_consumer_data-git-hub, README.md
 P4 Main 1.2 | Modify project_consumer_data-git-hub, README.md - reduced the basket of live FOREX pairs from 6 to 3

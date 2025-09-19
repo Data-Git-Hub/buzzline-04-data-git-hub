@@ -138,6 +138,14 @@ def parse_price_message(obj: dict) -> Optional[Tuple[str, float, float]]:
         ts_s = time.time()
     return (sym, price, ts_s)
 
+def _as_list(maybe_list_or_none):
+    """Normalize a subscribe-status field that could be list | dict | None into a list."""
+    if maybe_list_or_none is None:
+        return []
+    if isinstance(maybe_list_or_none, list):
+        return maybe_list_or_none
+    return [maybe_list_or_none]
+
 def on_message(app: WebSocketApp, message: str):
     try:
         data = json.loads(message)
@@ -150,8 +158,12 @@ def on_message(app: WebSocketApp, message: str):
                 except Exception:
                     print(obj)
 
-                succ = {d.get("symbol") for d in obj.get("success", []) if d.get("symbol")}
-                fail = {d.get("symbol") for d in obj.get("fails", []) if d.get("symbol")}
+                succ_items = _as_list(obj.get("success"))
+                fail_items = _as_list(obj.get("fails"))
+
+                succ = {d.get("symbol") for d in succ_items if isinstance(d, dict) and d.get("symbol")}
+                fail = {d.get("symbol") for d in fail_items if isinstance(d, dict) and d.get("symbol")}
+
                 WS_ACTIVE.update(succ)
                 WS_FAILED.update(fail)
 
