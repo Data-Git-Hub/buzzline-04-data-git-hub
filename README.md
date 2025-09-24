@@ -480,20 +480,21 @@ Contributors names and contact info <br>
 ---
 
 ## Version History
-P4 Finl 2.0 | Modify project_consumer_data-git-hub, README.md
-P4 Main 1.5 | Modify project_consumer_data-git-hub, README.md
-P4 Main 1.4 | Modify project_consumer_data-git-hub, README.md
-P4 Main 1.3 | Modify project_consumer_data-git-hub, README.md
-P4 Main 1.2 | Modify project_consumer_data-git-hub, README.md - reduced the basket of live FOREX pairs from 6 to 3
-P4 Main 1.1 | Modify project_consumer_data-git-hub, Modify README.md
-P4 Main 1.0 | Add project_consumer_data-git-hub; Modify README.md
-P4 Init 0.5 | Modify .env, .gitignore, README.md
-P4 Init 0.4 | Modify requirements.txt, README.md
-P4 Init 0.3 | Modify project_consumer_data-git-hub.py, README.md
-P4 Init 0.2 | Add project_consumer_data-git-hub.py; Modify README.md
-P4 Init 0.1 | Modify README.md
+- P4 Finl 2.1 | Modify README.md - fix formatting
+- P4 Finl 2.0 | Modify project_consumer_data-git-hub, README.md
+- P4 Main 1.5 | Modify project_consumer_data-git-hub, README.md
+- P4 Main 1.4 | Modify project_consumer_data-git-hub, README.md
+- P4 Main 1.3 | Modify project_consumer_data-git-hub, README.md
+- P4 Main 1.2 | Modify project_consumer_data-git-hub, README.md - reduced the basket of live FOREX pairs from 6 to 3
+- P4 Main 1.1 | Modify project_consumer_data-git-hub, Modify README.md
+- P4 Main 1.0 | Add project_consumer_data-git-hub; Modify README.md
+- P4 Init 0.5 | Modify .env, .gitignore, README.md
+- P4 Init 0.4 | Modify requirements.txt, README.md
+- P4 Init 0.3 | Modify project_consumer_data-git-hub.py, README.md
+- P4 Init 0.2 | Add project_consumer_data-git-hub.py; Modify README.md
+- P4 Init 0.1 | Modify README.md
 
 ## Test History
-P4 Test 1.0 | Modify README.md - Successful single FOREX run with error
-P4 Test 1.1 | Modify README.md - Successful single USD/EUR FOREX run with multiple errors
-P4 Test 1.2 | Modify README.md - Errors
+- P4 Test 1.0 | Modify README.md - Successful single FOREX run with error
+- P4 Test 1.1 | Modify README.md - Successful single USD/EUR FOREX run with multiple errors
+- P4 Test 1.2 | Modify README.md - Errors
